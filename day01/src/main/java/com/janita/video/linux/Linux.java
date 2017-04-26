@@ -61,6 +61,7 @@ public class Linux {
      * 4.ls > somefile.2 :可以把ls要显示的内容写到somefile.2文件中
      * 5.>:重定向
      * 6.echo "some text" >> somefile.2 :向某个文件中追加一些内容，若是>则覆盖
+     * 7.用文本编辑器来编辑生成文件 vi somefile.3 :直接打开该文件
      *
      *
      *
