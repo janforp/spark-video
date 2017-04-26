@@ -78,7 +78,8 @@ public class Linux {
      * p    粘贴
      * v    进入字符选择模式，选择完成后按y复制，按p粘贴
      * ctrl+v   进入块选择模式
-     * shift+v  行选择模式
+     * shift+v  行选择模式.
+     * q!   强制退出
      * 统一替换：%s/oldWord/newWord:在地行命令模式中输入,效果：  查找文件中所有的oldWord替换成newWord
      * 查找：  /keyword    效果：查找文件中出现的keyword,并定位到第一个出现的地方，按n下一个，按N定位到上一个
      */
@@ -87,7 +88,7 @@ public class Linux {
      * 六：文件权限操作
      * drwxr-xr-x
      * d:   标识节点类型(d:文件夹 -：文件 1：连接)
-     * r：可读 w：可写    x：可执行
+     * r：可读(显示内容) w：可写(修改)    x：可执行(运行)
      * 第一组rwx： 表示拥有者对他的权限
      * 第二组r-x:  表示所属组的权限
      * 第三组r-x:  表示其他用户的权限
@@ -95,9 +96,18 @@ public class Linux {
      * 1.修改权限   chmod g -rw somefile    不让组用户的rw权限
      * 2.chmod o -rw somefile   不让其他人有rw权限
      * 3.chmod u +x somefile    所有者加上x权限
-     * 4.
-     * 5.
-     * 6.
+     * 4.chmod 777 somefile 所有人有所有权限
+     * 5.文件夹权限 的时候里面的权限不会自动改，若要一起改则递归改 chmod -R 770 dir 递归修改文件夹权限
+     * 6.更改所有者  chown username:group -R somefile
+     */
+
+    /**
+     * 七：基本的用户管理
+     * 1.添加用户(root)   useradd username    添加username用户
+     * 2.为用户添加密码    passwd username 为username用户添加密码
+     * 3.用户登录之后输入pwd会在/home/username目录里面
+     *
+     *
      *
      *
      */
