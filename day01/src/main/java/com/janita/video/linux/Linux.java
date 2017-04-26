@@ -62,6 +62,8 @@ public class Linux {
      * 5.>:重定向
      * 6.echo "some text" >> somefile.2 :向某个文件中追加一些内容，若是>则覆盖
      * 7.用文本编辑器来编辑生成文件 vi somefile.3 :直接打开该文件
+     * 8.mv 移动(也可重命名)
+     * 9.rm 删除
      */
 
     /**
@@ -80,4 +82,24 @@ public class Linux {
      * 统一替换：%s/oldWord/newWord:在地行命令模式中输入,效果：  查找文件中所有的oldWord替换成newWord
      * 查找：  /keyword    效果：查找文件中出现的keyword,并定位到第一个出现的地方，按n下一个，按N定位到上一个
      */
+
+    /**
+     * 六：文件权限操作
+     * drwxr-xr-x
+     * d:   标识节点类型(d:文件夹 -：文件 1：连接)
+     * r：可读 w：可写    x：可执行
+     * 第一组rwx： 表示拥有者对他的权限
+     * 第二组r-x:  表示所属组的权限
+     * 第三组r-x:  表示其他用户的权限
+     *
+     * 1.修改权限   chmod g -rw somefile    不让组用户的rw权限
+     * 2.chmod o -rw somefile   不让其他人有rw权限
+     * 3.chmod u +x somefile    所有者加上x权限
+     * 4.
+     * 5.
+     * 6.
+     *
+     *
+     */
+
 }
