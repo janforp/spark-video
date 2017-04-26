@@ -74,6 +74,10 @@ public class Linux {
      * dd   直接删除一行，若 5dd ,在一次性删除光标后面的5行
      * yy   复制当前行 若3yy,在复制3行
      * p    粘贴
-     *
+     * v    进入字符选择模式，选择完成后按y复制，按p粘贴
+     * ctrl+v   进入块选择模式
+     * shift+v  行选择模式
+     * 统一替换：%s/oldWord/newWord:在地行命令模式中输入,效果：  查找文件中所有的oldWord替换成newWord
+     * 查找：  /keyword    效果：查找文件中出现的keyword,并定位到第一个出现的地方，按n下一个，按N定位到上一个
      */
 }
