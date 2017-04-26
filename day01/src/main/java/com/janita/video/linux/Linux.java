@@ -106,6 +106,8 @@ public class Linux {
      * 1.添加用户(root)   useradd username    添加username用户
      * 2.为用户添加密码    passwd username 为username用户添加密码
      * 3.用户登录之后输入pwd会在/home/username目录里面
+     * 4.一般情况下不用root登录,输入su ，要求输入密码:    输入root密码操作
+     * 5.sudo usseradd huangxiaoming 临时获得root的权限添加用户，要求输入密码
      *
      *
      *
