@@ -125,6 +125,37 @@ public class Linux {
      *
      *  7.du -sh Packages/  查看Packages目录下面的文件的大小    3.4G Packages
      *  8.du -sh * 查看该目录下的所有文件夹/文件的大小
+     *  9.df -h :查看磁盘空间
+     */
+
+    /**
+     * 关机：halt
+     * 重启：reboot
+     */
+
+    /**
+     * SSH
+     * 远程登录的安全外壳协议
+     * 有两种身份验证机制
+     * 1.用户名+密码验证
+     * 2.密钥验证：有了密钥就不用输入密码
+     */
+
+    /**
+     * 免密登录
+     * 1.ssh客户的+ssh服务端
+     * 2.ssh ip
+     * 3.scp somefile root@ip:/home 在当前几期把somefile拷贝到ip机子的/home文件夹下面
+     */
+
+    /**
+     * 配置免密登录步骤：
+     * 加入 A 要登录 B
+     * 在A上操作
+     * 1.首先生成秘钥对:   ssh-keygen      (一直回车)   生成了id_rsa及id_rsa.pub
+     * 2.再将A自己的公钥拷贝并追加到B的授权列表文件authorized_keys中 ：   ssh-copy-id + B的IP
+     * 3.输入目标主机密码
+     * 4.A登录到B之后，想退出，输入:    exit
      */
 
 }
