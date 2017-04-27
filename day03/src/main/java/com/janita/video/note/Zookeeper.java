@@ -5,4 +5,9 @@ package com.janita.video.note;
  */
 public class Zookeeper {
 
+    /**
+     *  zookeeper集群机制：半数
+     *
+     *  算法：PAXOS ----简化---> Zab 投票算法
+     */
 }
