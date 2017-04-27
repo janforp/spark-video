@@ -108,10 +108,23 @@ public class Linux {
      * 3.用户登录之后输入pwd会在/home/username目录里面
      * 4.一般情况下不用root登录,输入su ，要求输入密码:    输入root密码操作
      * 5.sudo usseradd huangxiaoming 临时获得root的权限添加用户，要求输入密码
+     * 6.为用户配置sudo权限：vi /etc/sudoers 添加一行：username ALL=(ALL)  ALL
+     */
+
+    /**
+     * 八
+     * 1.修改主机名：vi /etc/sysconfig/network    加上主机名
+     * 2.修改IP:vi /etc/sysconfig/network-srripts/ifcfg-eth0
+     * 3.查看系统版本：uname -a
+     * 4.系统内核版本 uname-u
+     * 5.date -help 查看日期相关的命令
+     * 6.mount -t iso9660 -o -ro /dev/cdrom /mnt/cdrom 挂载外部存储设备到系统
+     *      a.mkdir /mnt/cdrom  创建目录用于挂载
+     *      b.mount -t iso9660 -o -ro /dev/cdrom /mnt/cdrom 将设备/dev/cdrom挂载到 挂载点: /mnt/cdrom中
+     *      c.umount    /mnt/cdrom  接触挂载
      *
-     *
-     *
-     *
+     *  7.du -sh Packages/  查看Packages目录下面的文件的大小    3.4G Packages
+     *  8.du -sh * 查看该目录下的所有文件夹/文件的大小
      */
 
 }
