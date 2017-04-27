@@ -8,6 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>day01</module>
+        <module>day02</module>
     </modules>
     <packaging>pom</packaging>
 
