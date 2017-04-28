@@ -1,9 +1,6 @@
 package com.janita.video.zookeeper;
 
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -50,5 +47,18 @@ public class ZkUtil {
             map.put(parentNodePath + "/" +child,new String(data));
         }
         return map;
+    }
+
+    /**
+     * 创建节点-数据
+     * @param zk
+     * @param nodePath
+     * @param data
+     * @return
+     * @throws KeeperException
+     * @throws InterruptedException
+     */
+    public String createNode(ZooKeeper zk,String nodePath,String data) throws KeeperException, InterruptedException {
+        return zk.create(nodePath,data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT_SEQUENTIAL);
     }
 }
