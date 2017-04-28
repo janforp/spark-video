@@ -1,4 +1,4 @@
-package com.janita.video;
+package com.janita.video.zookeeper;
 
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;

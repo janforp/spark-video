@@ -1,4 +1,4 @@
-package com.janita.video;
+package com.janita.video.zookeeper;
 
 /**
  * Created by Janita on 2017-04-28 09:33
