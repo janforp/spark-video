@@ -15,6 +15,7 @@ public class ProducerTest {
             Thread.sleep(random.nextInt(10)*1000);
 
             producer.produceMessage("Hello, world! -- " + i);
+
             producer.close();
         }
     }
