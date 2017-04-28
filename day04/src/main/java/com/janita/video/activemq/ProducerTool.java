@@ -20,6 +20,10 @@ public class ProducerTool {
     private Session session = null;
     private MessageProducer producer = null;
 
+    /**
+     * 初始化
+     * @throws JMSException
+     */
     private void initialize() throws JMSException {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(user,password,url);
         connection = connectionFactory.createConnection();
@@ -29,8 +33,33 @@ public class ProducerTool {
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT );
     }
 
+    /**
+     * 发送消息
+     * @param message
+     * @throws JMSException
+     */
     public void produceMessage(String message) throws JMSException {
         initialize();
+        TextMessage msg = session.createTextMessage(message);
+        connection.start();
+        System.out.println("Producer:->Sending message: " + message);
+        producer.send(msg);
+        System.out.println("Producer:->Message send complete");
+    }
+
+    /**
+     * 关闭资源
+     * @throws JMSException
+     */
+    public void close() throws JMSException {
+        System.out.println("Producer:-> Closing connection " );
+        if (producer != null)
+            producer.close();
+        if (session != null)
+            session.close();
+        if (connection != null)
+            connection.close();
+
     }
 
 }

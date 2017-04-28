@@ -123,6 +123,10 @@ public class Linux {
      *      b.mount -t iso9660 -o -ro /dev/cdrom /mnt/cdrom 将设备/dev/cdrom挂载到 挂载点: /mnt/cdrom中
      *      c.umount    /mnt/cdrom  接触挂载
      *
+     *
+     *
+     *
+     *
      *  7.du -sh Packages/  查看Packages目录下面的文件的大小    3.4G Packages
      *  8.du -sh * 查看该目录下的所有文件夹/文件的大小
      *  9.df -h :查看磁盘空间
