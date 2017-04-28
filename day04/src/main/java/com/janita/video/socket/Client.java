@@ -16,6 +16,8 @@ public class Client  {
 
         PrintWriter writer = new PrintWriter(out);
         writer.println("hello");
+        writer.print("kitty");
+        writer.print("goodbye");
         writer.flush();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
