@@ -57,7 +57,6 @@ public class DistributeClient {
     }
 
     public static void main(String[] args){
-
         DistributeClient client = new DistributeClient();
 
     }
