@@ -21,6 +21,5 @@ public class Server {
             //启动新线程做业务
            new Thread(new ServerTask(socket)).start();
         }
-
     }
 }

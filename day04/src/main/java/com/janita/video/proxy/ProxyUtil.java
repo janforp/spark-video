@@ -9,8 +9,8 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyUtil {
 
+    @SuppressWarnings("unchecked")
     public static <T> T getProxy(final int discountCoupon,final Class<?> interfaceClass,final Class<?> implementsClass){
-
 
         return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class[]{interfaceClass}, new InvocationHandler() {
             @Override
