@@ -18,6 +18,7 @@ public class Consumer implements Runnable {
             String temp = queue.take();
             System.out.println("*******"+temp);
         }catch (Exception e){
+
             e.printStackTrace();
         }
     }
