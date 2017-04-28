@@ -13,16 +13,7 @@ import java.util.List;
  * zookeeper客户的API
  */
 public class SimpleZkClient {
-    /**
-     * 连接zookeeper的地址
-     * 前面的连不上就会连后面的
-     */
-    private static final String CONNECT_STRING =
-            "192.168.128.101:2181,192.168.128.101:2182,192.168.128.103:2181,192.168.128.104:2181";
-    /**
-     * 回话延迟时间
-     */
-    private static final int SESSION_TIMEOUT = 2000;
+
     private ZooKeeper zkClient = null ;
 
     @Before
@@ -30,7 +21,7 @@ public class SimpleZkClient {
         /**
          * 拿到客户端
          */
-        zkClient = new ZooKeeper(CONNECT_STRING, SESSION_TIMEOUT, new Watcher() {
+        zkClient = new ZooKeeper(ZkConsts.CONNECT_STRING, ZkConsts.SESSION_TIMEOUT, new Watcher() {
 
             /**
              * 收到事件通知后的回调函数(应该是我们自己的事件处理逻辑)
@@ -65,7 +56,7 @@ public class SimpleZkClient {
     @Test
     public void createNode() throws KeeperException, InterruptedException {
         String nodeCreated =
-                zkClient.create("/eclipse","helloZk".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                zkClient.create("/servers","helloZk".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         System.out.println("******* " + nodeCreated);
     }
 
@@ -87,6 +78,32 @@ public class SimpleZkClient {
     public void nodeExist() throws KeeperException, InterruptedException {
         Stat stat = zkClient.exists("/eclipse",true);
         System.out.println("******* " + stat);
+    }
+
+    /**
+     * 获取zNode的数据
+     */
+    @Test
+    public void getData() throws KeeperException, InterruptedException {
+        byte[] data = zkClient.getData("/eclipse",true,null);
+        System.out.println("******* " + new String(data));
+    }
+
+    /**
+     * 删除数据
+     * 参数2：指定要删除的版本，-1表示要删除全部版本
+     */
+    @Test
+    public void deleteZNode() throws KeeperException, InterruptedException {
+        zkClient.delete("/eclipse",-1);
+    }
+
+    /**
+     * 修改数据
+     */
+    @Test
+    public void setData() throws KeeperException, InterruptedException {
+        zkClient.setData("/eclipse","newData".getBytes(),-1);
     }
 
 }
