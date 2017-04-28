@@ -11,7 +11,8 @@
         <module>day02</module>
         <module>day03</module>
         <module>day04</module>
-    </modules>
+		<module>day05</module>
+	</modules>
     <packaging>pom</packaging>
 
 	<name>spark-video</name>
