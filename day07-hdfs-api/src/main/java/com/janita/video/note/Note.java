@@ -1,4 +1,4 @@
-package com.janita.video;
+package com.janita.video.note;
 
 /**
  * Created by Janita on 2017-05-04 22:35
