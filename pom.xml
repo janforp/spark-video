@@ -13,7 +13,8 @@
         <module>day04</module>
 		<module>day05</module>
 		<module>day06-hadoop</module>
-	</modules>
+        <module>day07-hdfs-api</module>
+    </modules>
     <packaging>pom</packaging>
 
 	<name>spark-video</name>
