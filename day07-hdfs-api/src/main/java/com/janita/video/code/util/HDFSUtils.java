@@ -3,7 +3,9 @@ package com.janita.video.code.util;
 import com.janita.video.code.constant.Consts;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.LocatedFileStatus;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.RemoteIterator;
 import org.apache.hadoop.hdfs.server.namenode.FSNamesystem;
 
 import java.io.IOException;
@@ -69,9 +71,9 @@ public class HDFSUtils {
      * @param path
      * @throws IOException
      */
-    public static void delete(FileSystem fileSystem,Path path) throws Exception {
+    public static void delete(FileSystem fileSystem,Path path,boolean recurise) throws Exception {
         fileSystem = initFileSystem(fileSystem);
-        fileSystem.delete(path);
+        fileSystem.delete(path,recurise);
     }
 
     /**
@@ -84,6 +86,19 @@ public class HDFSUtils {
     public static void rename(FileSystem fileSystem,Path oldName , Path newName) throws Exception {
         fileSystem = initFileSystem(fileSystem);
         fileSystem.rename(oldName,newName);
+    }
+
+    /**
+     * 递归查询目录下的所有文件
+     * @param fileSystem
+     * @param path  目录
+     * @param isR   是否递归查询
+     * @return
+     * @throws IOException
+     */
+    public static RemoteIterator<LocatedFileStatus> LSDir(FileSystem fileSystem,Path path,boolean isR) throws IOException, URISyntaxException, InterruptedException {
+        fileSystem = initFileSystem(fileSystem);
+        return fileSystem.listFiles(path,isR);
     }
 
 }
