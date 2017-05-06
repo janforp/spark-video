@@ -14,6 +14,7 @@
 		<module>day05</module>
 		<module>day06-hadoop</module>
         <module>day07-hdfs-api</module>
+        <module>day08-mapreduce</module>
     </modules>
     <packaging>pom</packaging>
 
