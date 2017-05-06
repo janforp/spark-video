@@ -1,13 +1,14 @@
 package com.janita.video.code.util;
 
 import com.janita.video.code.constant.Consts;
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.LocatedFileStatus;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.fs.RemoteIterator;
+import org.apache.hadoop.fs.*;
 import org.apache.hadoop.hdfs.server.namenode.FSNamesystem;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,6 +19,10 @@ import java.net.URISyntaxException;
  * hdfs工具
  */
 public class HDFSUtils {
+
+    private HDFSUtils(){
+
+    }
 
     private static FileSystem initFileSystem(FileSystem fileSystem) throws URISyntaxException, IOException, InterruptedException {
 
@@ -96,9 +101,87 @@ public class HDFSUtils {
      * @return
      * @throws IOException
      */
-    public static RemoteIterator<LocatedFileStatus> LSDir(FileSystem fileSystem,Path path,boolean isR) throws IOException, URISyntaxException, InterruptedException {
+    public static RemoteIterator<LocatedFileStatus> lsDir(FileSystem fileSystem,Path path,boolean isR) throws IOException, URISyntaxException, InterruptedException {
         fileSystem = initFileSystem(fileSystem);
         return fileSystem.listFiles(path,isR);
+    }
+
+    /**
+     * 查询目录下的文件
+     * @param fileSystem
+     * @param path
+     * @return
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public static FileStatus[] listDir(FileSystem fileSystem, Path path ) throws InterruptedException, IOException, URISyntaxException {
+        fileSystem = initFileSystem(fileSystem);
+        return fileSystem.listStatus(path);
+    }
+
+    /**
+     * 通过流的方式上传本地系统文件到HDFS
+     * @param fileSystem
+     * @param source
+     * @param dest
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public static void upload(FileSystem fileSystem , File source , Path dest) throws InterruptedException, IOException, URISyntaxException {
+        fileSystem = initFileSystem(fileSystem);
+        FSDataOutputStream outputStream = fileSystem.create(dest);
+        FileInputStream inputStream = new FileInputStream(source);
+        IOUtils.copy(inputStream,outputStream);
+    }
+
+    /**
+     * 通过流的方式下载文件
+     * @param fileSystem
+     * @param source
+     * @param dest
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public static void download(FileSystem fileSystem,Path source,File dest) throws InterruptedException, IOException, URISyntaxException {
+        fileSystem = initFileSystem(fileSystem);
+        FSDataInputStream in = fileSystem.open(source);
+        FileOutputStream out = new FileOutputStream(dest);
+        IOUtils.copy(in,out);
+    }
+
+    /**
+     * 指定从文件的某个字节开始下载
+     * @param fileSystem
+     * @param source
+     * @param dest
+     * @param seek
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public static void randomAccess(FileSystem fileSystem ,Path source ,File dest,Long seek) throws InterruptedException, IOException, URISyntaxException {
+        fileSystem = initFileSystem(fileSystem);
+        FSDataInputStream in = fileSystem.open(source);
+        in.seek(seek);
+        FileOutputStream out = new FileOutputStream(dest);
+        IOUtils.copy(in,out);
+    }
+
+    /**
+     * 从文件中读取内容显示在控制台
+     * @param fileSystem
+     * @param source
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public static void print(FileSystem fileSystem ,Path source) throws InterruptedException, IOException, URISyntaxException {
+        fileSystem = initFileSystem(fileSystem);
+        FSDataInputStream in = fileSystem.open(source);
+        IOUtils.copy(in,System.out);
     }
 
 }
