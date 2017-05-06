@@ -1,5 +1,7 @@
 package com.janita.video.code.rpc;
 
+import com.janita.video.code.rpc.webrpc.IUserLoginService;
+import com.janita.video.code.rpc.webrpc.UserServiceImpl;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.ipc.RPC;
 
@@ -17,5 +19,15 @@ public class PublishServerUtil {
         RPC.Server server = builder.build();
 
         server.start();
+
+
+
+
+        RPC.Builder builder2 = new RPC.Builder(new Configuration());
+        builder.setBindAddress("localhost").setPort(9999).setProtocol(IUserLoginService.class).setInstance(new UserServiceImpl());
+
+        RPC.Server server2 = builder2.build();
+
+        server2.start();
     }
 }
