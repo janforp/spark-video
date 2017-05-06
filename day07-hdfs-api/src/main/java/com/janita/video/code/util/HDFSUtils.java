@@ -4,6 +4,8 @@ import com.janita.video.code.constant.Consts;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.hdfs.server.namenode.FSNamesystem;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -84,10 +86,4 @@ public class HDFSUtils {
         fileSystem.rename(oldName,newName);
     }
 
-
-    public static void main(String[] args) throws Exception {
-
-        Path path = new Path("C:\\Users\\Administrator\\Desktop\\dataFormat.json");
-        addFile(null,path,new Path("/home/dd.json"));
-    }
 }
