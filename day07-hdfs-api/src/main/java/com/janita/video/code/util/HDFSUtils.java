@@ -18,6 +18,7 @@ import java.net.URISyntaxException;
  * Created by Janita on 2017-05-04 22:46
  * hdfs工具
  */
+@SuppressWarnings("unused")
 public class HDFSUtils {
 
     private HDFSUtils(){
