@@ -1,12 +1,8 @@
 package com.janita.video.code.flow;
 
 import com.janita.video.code.mapreduce.Consts;
-import com.janita.video.code.mapreduce.WordCountDriver;
-import com.janita.video.code.mapreduce.WordCountMapper;
-import com.janita.video.code.mapreduce.WordCountReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -19,6 +15,7 @@ import java.io.IOException;
 
 /**
  * Created by Janita on 2017-05-07 18:29
+ * 对手机用户上行流量,下行流量及总流量的统计
  */
 public class FlowCount {
 
@@ -80,6 +77,4 @@ public class FlowCount {
         boolean res = job.waitForCompletion(true);
         System.exit(res?0:1);
     }
-
-
 }
