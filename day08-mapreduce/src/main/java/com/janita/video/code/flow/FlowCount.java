@@ -28,9 +28,7 @@ public class FlowCount {
             String phoneNum = fields[1];
             Long upFlow = Long.parseLong(fields[fields.length - 3]);
             Long dFlow = Long.parseLong(fields[fields.length - 2]);
-
             context.write(new Text(phoneNum),new FlowBean(upFlow,dFlow));
-
         }
     }
 
@@ -40,12 +38,10 @@ public class FlowCount {
         protected void reduce(Text key, Iterable<FlowBean> values, Context context) throws IOException, InterruptedException {
             Long sumUpFlow = 0L;
             Long sumDFlow = 0L ;
-
             for (FlowBean bean :values){
                 sumUpFlow += bean.getUpFlow();
                 sumDFlow += bean.getdFlow();
             }
-
             FlowBean bean = new FlowBean(sumUpFlow,sumDFlow);
             context.write(key,bean);
         }

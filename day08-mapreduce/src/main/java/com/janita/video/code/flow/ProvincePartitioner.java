@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class ProvincePartitioner extends Partitioner<Text,FlowBean> {
 
-    public static HashMap<String,Integer> provinceDict = new HashMap<>();
+    private static HashMap<String,Integer> provinceDict = new HashMap<>();
     static {
         provinceDict.put("138",0);
         provinceDict.put("137",1);
@@ -19,9 +19,7 @@ public class ProvincePartitioner extends Partitioner<Text,FlowBean> {
     }
     @Override
     public int getPartition(Text key, FlowBean value, int numPartitions) {
-
         String prefix = key.toString().substring(0,3);
-        Integer pro = provinceDict.get(prefix);
-        return pro;
+        return provinceDict.get(prefix);
     }
 }
