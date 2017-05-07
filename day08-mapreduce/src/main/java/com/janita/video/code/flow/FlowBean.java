@@ -1,5 +1,6 @@
 package com.janita.video.code.flow;
 
+import com.janita.video.code.mapreduce.Consts;
 import org.apache.hadoop.io.Writable;
 
 import java.io.DataInput;
@@ -15,9 +16,15 @@ public class FlowBean implements Writable{
 
     private Long dFlow;
 
+    private Long sumFlow;
+
+    public FlowBean() {
+    }
+
     public FlowBean(Long upFlow, Long dFlow) {
         this.upFlow = upFlow;
         this.dFlow = dFlow;
+        this.sumFlow = upFlow + dFlow;
     }
 
     public Long getUpFlow() {
@@ -32,6 +39,14 @@ public class FlowBean implements Writable{
         return dFlow;
     }
 
+    public Long getSumFlow() {
+        return sumFlow;
+    }
+
+    public void setSumFlow(Long sumFlow) {
+        this.sumFlow = sumFlow;
+    }
+
     public void setdFlow(Long dFlow) {
         this.dFlow = dFlow;
     }
@@ -43,17 +58,26 @@ public class FlowBean implements Writable{
      */
     @Override
     public void write(DataOutput out) throws IOException {
-
-
+        out.writeLong(upFlow);
+        out.writeLong(dFlow);
+        out.writeLong(sumFlow);
     }
 
     /**
      * 反序列化
+     * 反序列化顺序与序列化顺序一致
      * @param in
      * @throws IOException
      */
     @Override
     public void readFields(DataInput in) throws IOException {
+        upFlow = in.readLong();
+        dFlow = in.readLong();
+        sumFlow = in.readLong();
+    }
 
+    @Override
+    public String toString() {
+        return upFlow + Consts.ENTER + dFlow + Consts.ENTER + sumFlow;
     }
 }

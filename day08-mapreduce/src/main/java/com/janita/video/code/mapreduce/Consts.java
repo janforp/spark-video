@@ -10,4 +10,6 @@ public class Consts {
     public static final String MAP_REDUCE_FRAMEWORK_NAME = "mapreduce.framework.name";
 
     public static final String YARN_RESOURCEMANAGER_HOSTNAME = "yarn.resourcemanager.hostname";
+
+    public static final String ENTER = "\t";
 }
