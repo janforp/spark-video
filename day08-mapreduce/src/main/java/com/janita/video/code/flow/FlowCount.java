@@ -69,6 +69,10 @@ public class FlowCount {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
 
+        //数据分区
+        job.setPartitionerClass(ProvincePartitioner.class);
+        job.setNumReduceTasks(5);
+
         //需要统计的文件
         FileInputFormat.setInputPaths(job,new Path(args[0]));
         //输出结果
