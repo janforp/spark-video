@@ -19,7 +19,7 @@ import java.io.IOException;
  */
 public class FlowCount {
 
-    static class FlowCountMapper extends Mapper<LongWritable,Text,Text,FlowBean>{
+    private static class FlowCountMapper extends Mapper<LongWritable,Text,Text,FlowBean>{
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -34,7 +34,7 @@ public class FlowCount {
         }
     }
 
-    static class FlowCountReducer extends Reducer<Text,FlowBean,Text,FlowBean>{
+    private static class FlowCountReducer extends Reducer<Text,FlowBean,Text,FlowBean>{
 
         @Override
         protected void reduce(Text key, Iterable<FlowBean> values, Context context) throws IOException, InterruptedException {
