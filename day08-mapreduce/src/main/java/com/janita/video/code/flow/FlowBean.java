@@ -2,6 +2,7 @@ package com.janita.video.code.flow;
 
 import com.janita.video.code.mapreduce.Consts;
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -10,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by Janita on 2017-05-07 18:30
  */
-public class FlowBean implements Writable{
+public class FlowBean implements WritableComparable<FlowBean>{
 
     private Long upFlow;
 
@@ -79,5 +80,11 @@ public class FlowBean implements Writable{
     @Override
     public String toString() {
         return upFlow + Consts.ENTER + dFlow + Consts.ENTER + sumFlow;
+    }
+
+    @Override
+    public int compareTo(FlowBean o) {
+
+        return this.sumFlow > o.getSumFlow() ? -1 : 1 ;
     }
 }
