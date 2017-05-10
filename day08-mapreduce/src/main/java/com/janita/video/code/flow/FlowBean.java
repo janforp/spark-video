@@ -1,7 +1,6 @@
 package com.janita.video.code.flow;
 
 import com.janita.video.code.mapreduce.Consts;
-import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
