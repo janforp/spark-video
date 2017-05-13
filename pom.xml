@@ -19,7 +19,8 @@
         <module>day10-test</module>
         <module>day28-rdd</module>
 		<module>day25-scala</module>
-	</modules>
+        <module>akka-demo</module>
+    </modules>
     <packaging>pom</packaging>
 
 
