@@ -1,4 +1,5 @@
-package com.janita.video
+package com.janita.video.base
+
 import scala.collection.mutable.Map
 
 /**

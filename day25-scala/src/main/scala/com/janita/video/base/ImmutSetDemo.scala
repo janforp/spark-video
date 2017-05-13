@@ -1,4 +1,4 @@
-package com.janita.video
+package com.janita.video.base
 
 import scala.collection.immutable.HashSet
 
