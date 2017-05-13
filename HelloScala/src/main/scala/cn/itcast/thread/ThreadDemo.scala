@@ -21,6 +21,7 @@ object ThreadDemo {
 
     //callable 和 Runable都是启动一个线程, 不过Callable可以有返回值
     val f: Future[Int] = pool.submit(new Callable[Int] {
+
       override def call(): Int = {
         Thread.sleep(10000)
         100
