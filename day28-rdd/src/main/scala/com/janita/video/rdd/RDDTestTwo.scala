@@ -1,5 +1,6 @@
 package com.janita.video.rdd
 
+import junit.framework.Test
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -36,7 +37,11 @@ object RDDTestTwo {
     * 将rdd1里面的每一个元素先切分在压平
     * @param sc
     */
+
+  @Test
   def flatMapRdd(sc : SparkContext) : Unit = {
+
+    val sc = init()
 
     val rdd = sc.parallelize(Array("a b c","d e f","h i j"))
 

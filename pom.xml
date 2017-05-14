@@ -21,7 +21,9 @@
 		<module>day25-scala</module>
         <module>akka-demo</module>
 		<module></module>
-    </modules>
+		<module>hello-spark</module>
+		<module>day29-spark</module>
+	</modules>
     <packaging>pom</packaging>
 
 
