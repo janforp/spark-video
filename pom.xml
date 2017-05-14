@@ -20,8 +20,7 @@
         <module>day28-rdd</module>
 		<module>day25-scala</module>
         <module>akka-demo</module>
-
-		<module>hello-scala</module>
+		<module></module>
     </modules>
     <packaging>pom</packaging>
 
